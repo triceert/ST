@@ -4,26 +4,30 @@
 
 function [streams,constants]=initializer
 
-%% create the stream struct
-    field1 = 'FEEDA';       value1 = cell([1,6]);
-    field2 = 'FEEDB';       value2 = cell([1,6]);
-    field3 = 'FEFF';        value3 = cell([1,6]);
-    field4 = 'FEX';         value4 = cell([1,6]);
-    field5 = 'FWASTE';      value5 = cell([1,6]);
-    field6 = 'FDEC';        value6 = cell([1,6]);
-    field7 = 'FPROD';       value7 = cell([1,6]);
-    field8 = 'FBOT';        value8 = cell([1,6]);
-    field9 = 'FPURGE';      value9 = cell([1,6]);
-    field10 = 'FRECYCLE';   value10 = cell([1,6]);
+%% create the stream table
+    FEEDA       = zeros(6,1);
+    FEEDB       = zeros(6,1);
+    FEFF        = zeros(6,1);
+    FEX         = zeros(6,1);
+    FWASTE      = zeros(6,1);
+    FDEC        = zeros(6,1);
+    FBOT        = zeros(6,1);
+    FPURGE      = zeros(6,1);
+    FRECYCLE    = zeros(6,1);
+    FMIX        = zeros(6,1);
+    
+    
+    COMPONENTS = {'A';'B';'C';'P';'E';'G'};
 
-    streams = struct(field1,value1,field2,value2,field3,value3,field4,...
-        value4,field5,value5,field6,value6,field7,value7,field8,value8,...
-        field9,value9,field10,value10);
-    
-    streams(1).FEEDA=6582;       %[lb/h]
-    streams(2).FEEDB=14996;      %[lb/h] 
-    
+      streams = table(FEEDA,FEEDB,FEFF,FEX,FWASTE,FDEC,...
+          FBOT,FPURGE,FRECYCLE,FMIX,'RowNames',COMPONENTS);
+      
+      
     %update given stream variables
+    streams.FEEDA(1)=6582;       %[lb/h]
+    streams.FEEDB(2)=14996;      %[lb/h] 
+    
+    
 
 %% create a struct with the given constants 
     field1 = 'Volume';       value1 = 1000;           %[ft^3]

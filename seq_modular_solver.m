@@ -3,7 +3,10 @@
 
 function streams=seq_modular_solver(streams,constants)
 
-constants(1).k
+%call the mixer
+streams=mix(streams);
+%call the reactor
+streams=reac(streams);
 
 
 end
