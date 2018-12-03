@@ -14,6 +14,12 @@
 
 function main
 
+%load the stream and constant structs
+[streams, constants] = initializer;
+
+%run the modular solver
+modular_streams=seq_modular_solver(streams,constants)
+
 
 
 
